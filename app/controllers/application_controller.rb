@@ -7,8 +7,11 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "gamelibrary"
   end
 
-  get '/' do
-    "Hello World!"
+  helpers do
+
+    def logged_in?
+      !!session[:email]
+    end
   end
 
 end

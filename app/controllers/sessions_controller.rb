@@ -9,4 +9,8 @@ class SessionsController < ApplicationController
     redirect '/posts'
   end
 
+  get '/logout' do
+    session.clear
+  end
+
 end
