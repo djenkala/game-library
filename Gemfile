@@ -14,3 +14,4 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
  gem 'require_all'
  gem 'shotgun'
  gem 'bigdecimal', '1.4.2'
+ gem 'bcrypt', '~> 3.1.7'
