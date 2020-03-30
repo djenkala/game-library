@@ -22,5 +22,4 @@ class GamesController < ApplicationController
       redirect '/games'
     end
   end
-
 end
