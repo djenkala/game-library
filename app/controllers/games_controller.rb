@@ -16,6 +16,7 @@ class GamesController < ApplicationController
     if !logged_in?
       redirect "/login"
     else
+      game = current_user.games.find(params[:id])
       "Edit a game form"
     end
   end
