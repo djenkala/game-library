@@ -12,7 +12,7 @@ class GamesController < ApplicationController
     if !logged_in?
       redirect "/login"
     else
-      "A new game form"
+      erb :"games/new_game.html"
     end
   end
 
