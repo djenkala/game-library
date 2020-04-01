@@ -17,13 +17,19 @@ class GamesController < ApplicationController
   end
 
   get '/games/:id/edit' do
-    game = current_user.games.find_by(params[:id])
     if !logged_in?
       redirect "/login"
-    elsif game.user_id == current_user.id
-      "Edit a game form. #{current_user.id} is editing game #{game.id}"
+    else
+      game = current_user.games.find_by(params[:id])
+      if game.user_id == current_user.id
+      erb :"games/edit.html"
     else
       redirect '/games'
     end
+    end
+  end
+
+  post '/games' do
+    Games.create(params)
   end
 end
