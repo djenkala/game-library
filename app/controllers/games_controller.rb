@@ -4,6 +4,7 @@ class GamesController < ApplicationController
     if !logged_in?
       redirect "/login"
     else
+      @games = Games.all
       erb :"games/library.html"
     end
   end
@@ -31,5 +32,6 @@ class GamesController < ApplicationController
 
   post '/games' do
     Games.create(params)
+    redirect "/games"
   end
 end
