@@ -4,7 +4,7 @@ class GamesController < ApplicationController
     if !logged_in?
       redirect "/login"
     else
-    "Here are all of the games in your library."
+      erb :"games/library.html"
     end
   end
 
