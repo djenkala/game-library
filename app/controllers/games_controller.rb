@@ -19,7 +19,6 @@ class GamesController < ApplicationController
       game = current_user.games.find_by(params[:id])
       if game.user_id == current_user.id
       "Edit a game form. #{current_user.id} is editing game #{game.id}"
-      end
     else
       redirect '/games'
     end
