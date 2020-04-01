@@ -1,7 +1,11 @@
 class GamesController < ApplicationController
 
   get '/games' do
+    if !logged_in?
+      redirect "/login"
+    else
     "Here are all of the games in your library."
+    end
   end
 
   get '/games/new' do
@@ -15,7 +19,7 @@ class GamesController < ApplicationController
   get '/games/:id/edit' do
     if !logged_in?
       redirect "/login"
-    else
+    end
       game = current_user.games.find_by(params[:id])
       if game.user_id == current_user.id
       "Edit a game form. #{current_user.id} is editing game #{game.id}"
