@@ -1,7 +1,6 @@
 class GamesController < ApplicationController
 
   get '/games' do
-    if !logged_in?
     "Here are all of the games in your library."
   end
 
