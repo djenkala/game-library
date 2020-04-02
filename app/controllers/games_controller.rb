@@ -22,23 +22,24 @@ class GamesController < ApplicationController
   end
 
   post '/games' do
-    game = Game.new(params)
-    game.user_id = current_user.id
-    game.save
-    redirect "/games"
+    redirect_if_not_logged_in
+      game = Game.new(params)
+      game.user_id = current_user.id
+      game.save
+      redirect "/games"
   end
 
   get '/games/:id' do
     redirect_if_not_logged_in
-    @game = Game.find_by(id: params[:id])
-    erb :"games/show.html"
+      @game = Game.find_by(id: params[:id])
+      erb :"games/show.html"
   end
 
   post '/games/:id' do
     redirect_if_not_logged_in
-   @game = Game.find(params[:id])
-   @game.update(params.select{|i|i=="title" || i=="genre"})
-   redirect "/games/#{@game.id}"
+      @game = Game.find(params[:id])
+      @game.update(params.select{|i|i=="title" || i=="genre"})
+      redirect "/games/#{@game.id}"
   end
 
 end
