@@ -35,18 +35,18 @@ class GamesController < ApplicationController
       erb :"games/show.html"
   end
 
-  post '/games/:id' do
+  patch '/games/:id' do
     redirect_if_not_logged_in
       @game = Game.find(params[:id])
       @game.update(params.select{|i|i=="title" || i=="genre"})
       erb :"games/show.html"
   end
 
-  # post "/games/:id/delete" do
-  #   redirect_if_not_logged_in
-  #   @game = Game.find(params[:id])
-  #   @game.delete
-  #   redirect "/games"
-  # end
+  delete "/games/:id" do
+    redirect_if_not_logged_in
+    @game = Game.find(params[:id])
+    @game.delete
+    redirect "/games"
+  end
 
 end
