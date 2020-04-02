@@ -39,7 +39,7 @@ class GamesController < ApplicationController
     redirect_if_not_logged_in
       @game = Game.find(params[:id])
       @game.update(params.select{|i|i=="title" || i=="genre"})
-      redirect "/games/#{@game.id}"
+      erb :"games/show.html"
   end
 
 end
