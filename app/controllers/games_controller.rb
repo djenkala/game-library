@@ -34,4 +34,11 @@ class GamesController < ApplicationController
     erb :"games/show.html"
   end
 
+  post '/games/:id' do
+    redirect_if_not_logged_in
+   @game = Game.find(params[:id])
+   @game.update(params.select{|i|i=="title" || i=="genre"})
+   redirect "/games/#{@game.id}"
+  end
+
 end
