@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
 
+  get '/' do
+    redirect '/signup'
+  end
+
   get '/login' do
     erb :"sessions/login.html"
   end
