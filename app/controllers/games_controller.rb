@@ -38,14 +38,20 @@ class GamesController < ApplicationController
   patch '/games/:id' do
     redirect_if_not_logged_in
       @game = Game.find(params[:id])
-      @game.update(params.select{|i|i=="title" || i=="genre"})
-      erb :"games/show.html"
+      if @game.user_id == current_user.id
+        @game.update(params.select{|i|i=="title" || i=="genre"})
+        erb :"games/show.html"
+      else
+        redirect "/games"
+      end
   end
 
   delete "/games/:id" do
     redirect_if_not_logged_in
     @game = Game.find(params[:id])
-    @game.delete
+    if @game.user_id == current_user.id
+      @game.delete
+    end
     redirect "/games"
   end
 
