@@ -3,9 +3,6 @@ class UsersController < ApplicationController
     erb :"users/signup.html"
   end
 
-  #cannot create games with no name
-  #cant signup with existing user email (belongs to a current user)
-
   post '/users' do
     @user = User.new
     @user.email = params[:email]
