@@ -25,7 +25,9 @@ class GamesController < ApplicationController
     redirect_if_not_logged_in
       game = Game.new(params)
       game.user_id = current_user.id
-      game.save
+      if !game.title.blank?
+        game.save
+      end
       redirect "/games"
   end
 
