@@ -1,4 +1,7 @@
 <a href="/games">Home</a>
 <h1><label for="title">Title: <%= @game.title %></label></h1>
 <h2><label for="genre">Genre: <%= @game.genre %></label></h2>
+<h3>Created by: <%= @game.user.email %></h3>
+<% if @game.user == current_user %>
 <a href="/games/<%= @game.id %>/edit">Edit</a>
+<% end %>
